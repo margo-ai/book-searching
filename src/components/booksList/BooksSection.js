@@ -15,6 +15,15 @@ const BooksCount = styled.div`
 	font-size: 30px;
 	font-weight: 700;
 	margin-bottom: 15px;
+	padding-left: 15px;
+	@media (max-width: 1180px) {
+		font-size: 25px;
+	}
+	@media (max-width: 1000px) {
+		font-size: 20px;
+		margin-top: 18px;
+		margin-bottom: 10px;
+	}
 `;
 
 const BookListContainer = styled.div`
@@ -31,6 +40,17 @@ const BooksList = styled.ul`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 60px 30px;
+
+	@media (max-width: 1300px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (max-width: 1180px) {
+		gap: 40px 20px;
+	}
+	@media (max-width: 1000px) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 50px 50px;
+	}
 `;
 
 const BookItem = styled.li`
@@ -64,6 +84,13 @@ const BookImage = styled.div`
 	height: 300px;
 	margin-bottom: 18px;
 
+	@media (max-width: 1300px) {
+		height: 260px;
+	}
+	@media (max-width: 1180px) {
+		height: 250px;
+	}
+
 	& img {
 		width: 100%;
 		height: 100%;
@@ -75,18 +102,31 @@ const BookTitle = styled.h3`
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 23px;
-
-	margin-bottom: auto;
+	margin-bottom: 15px;
+	@media (max-width: 1180px) {
+		font-size: 18px;
+		line-height: 20px;
+		margin-bottom: 10px;
+	}
+	@media (max-width: 1000px) {
+		font-size: 20px;
+	}
 `;
 
 const BookCategory = styled.div`
 	font-size: 18px;
+	@media (max-width: 1180px) {
+		font-size: 16px;
+	}
 `;
 
 const BookAuthors = styled.div`
 	font-size: 16px;
 	line-height: 17px;
 	font-style: italic;
+	@media (max-width: 1180px) {
+		font-size: 15px;
+	}
 `;
 
 const SpinnerWrapper = styled.div`
@@ -98,18 +138,31 @@ const SpinnerWrapper = styled.div`
 const LoadMoreButton = styled.button`
 	display: block;
 	margin: 0 auto;
-	width: 300px;
+	width: 20%;
 	padding: 10px;
-	color: #fff;
+	color: #000;
 	border-radius: 7px;
-	background-color: grey;
-	border: none;
+	background-color: #f4f2ef;
+	border: 1px solid grey;
 	cursor: pointer;
 	transition: all 0.5s ease;
 	&:hover {
+		opacity: 0.5;
 		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
 			rgb(51, 51, 51) 0px 0px 0px 3px;
 	}
+	@media (max-width: 1180px) {
+		width: 25%;
+		font-size: 19px;
+	}
+`;
+
+const ListPlaceholder = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 23px;
+	margin-top: 15px;
 `;
 
 const BooksSection = () => {
@@ -186,6 +239,11 @@ const BooksSection = () => {
 			<BookListContainer>
 				{errorMessage}
 				{spinner}
+				{booksList.length === 0 && booksLoadingStatus !== "error" ? (
+					<ListPlaceholder>
+						Here you will see the books list
+					</ListPlaceholder>
+				) : null}
 				{books}
 			</BookListContainer>
 			{booksList.length !== 0 ? (
