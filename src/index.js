@@ -14,6 +14,13 @@ const Global = createGlobalStyle`
 		box-sizing: border-box;
 		font-family: 'Crimson Text', serif;
 		font-size: 22px;
+		color: #000;
+	}
+	a {
+		text-decoration: none;
+	}
+	li {
+		list-style: none;
 	}
 `;
 

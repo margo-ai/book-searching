@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {keyframes} from "styled-components";
 
 import searchIcon from "../../assets/img/search-icon.svg";
 
@@ -8,6 +9,7 @@ import {
 	setSearchName,
 	setCategory,
 	setSortBy,
+	setInputError,
 } from "../../reducers/booksSlice";
 
 const Header = styled.header`
@@ -37,6 +39,7 @@ const SearchFiltersBlock = styled.div`
 
 const SearchForm = styled.form`
 	display: flex;
+	position: relative;
 `;
 
 const SearchInput = styled.input`
@@ -115,11 +118,22 @@ const SortingForm = styled.form`
 	}
 `;
 
+const ErrorText = styled.div`
+	color: red;
+	font-size: 15px;
+	font-weight: 700;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+`;
+
 const HeaderSection = () => {
 	const dispatch = useDispatch();
 	const searchValue = useSelector((state) => state.books.searchName);
 	const sortedBy = useSelector((state) => state.books.sortedBy);
 	const category = useSelector((state) => state.books.category);
+	const searchError = useSelector((state) => state.books.inputError);
 
 	function handleChange(e) {
 		dispatch(setSearchName(e.target.value));
@@ -128,9 +142,15 @@ const HeaderSection = () => {
 
 	const searchBooks = (e) => {
 		e.preventDefault();
-		let terms = searchValue.replace(/ /g, "");
-		console.log(terms, sortedBy);
-		dispatch(fetchBooks({terms, category, sortedBy}));
+
+		if (searchValue.length === 0) {
+			dispatch(setInputError(true));
+		} else {
+			let terms = searchValue.replace(/ /g, "");
+			console.log(terms, sortedBy);
+			dispatch(fetchBooks({terms, category, sortedBy}));
+			dispatch(setInputError(false));
+		}
 	};
 
 	function handleCategory(e) {
@@ -149,6 +169,9 @@ const HeaderSection = () => {
 				<Title>Book Searching</Title>
 				<SearchFiltersBlock>
 					<SearchForm id="search" onSubmit={searchBooks}>
+						{searchError === true ? (
+							<ErrorText>Fill the search box!</ErrorText>
+						) : null}
 						<SearchInput
 							type="text"
 							placeholder="Search book"
