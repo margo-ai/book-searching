@@ -1,19 +1,29 @@
 import styled from "styled-components";
 import {useEffect} from "react";
+import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {FallingLines} from "react-loader-spinner";
 
-import {fetchMoreBooks, setStartIndex} from "../../reducers/booksSlice";
+import {
+	fetchMoreBooks,
+	setStartIndex,
+	setBoooksList,
+} from "../../reducers/booksSlice";
 
 const BooksCount = styled.div`
 	margin-top: 30px;
 	font-size: 30px;
 	font-weight: 700;
+	margin-bottom: 15px;
 `;
 
 const BookListContainer = styled.div`
 	padding: 20px 50px;
 	margin-bottom: 20px;
+
+	border: 1px solid grey;
+	background-color: #f4f2ef;
+	border-radius: 5px;
 `;
 
 const BooksList = styled.ul`
@@ -24,6 +34,11 @@ const BooksList = styled.ul`
 `;
 
 const BookItem = styled.li`
+	background-color: #fff;
+	display: inline-block;
+
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
 	&:hover h3 {
 		opacity: 0.5;
 		transition: all 0.5s ease;
@@ -33,12 +48,10 @@ const BookItem = styled.li`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		min-height: 520px;
+		min-height: 100%;
 
 		padding: 15px;
 		/* border: 1px solid grey; */
-		border-radius: 5px;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
 	}
 
 	&:hover a {
@@ -59,9 +72,9 @@ const BookImage = styled.div`
 `;
 
 const BookTitle = styled.h3`
-	font-size: 22px;
+	font-size: 20px;
 	font-weight: 700;
-	line-height: 25px;
+	line-height: 23px;
 
 	margin-bottom: auto;
 `;
@@ -72,6 +85,7 @@ const BookCategory = styled.div`
 
 const BookAuthors = styled.div`
 	font-size: 16px;
+	line-height: 17px;
 	font-style: italic;
 `;
 
@@ -110,6 +124,7 @@ const BooksSection = () => {
 	const sortedBy = useSelector((state) => state.books.sortedBy);
 	const category = useSelector((state) => state.books.category);
 	const startIndex = useSelector((state) => state.books.startIndex);
+
 	console.log(booksList);
 
 	function loadBooks() {
@@ -120,20 +135,28 @@ const BooksSection = () => {
 		);
 	}
 
+	function handleBook(bookId) {
+		localStorage.setItem("bookId", bookId);
+		localStorage.setItem("bookList", JSON.stringify(booksList));
+	}
+
 	function renderItems(array) {
 		const items = array.map((item) => {
 			const {id, title, authors, image, categories} = item;
-
+			const category =
+				categories !== undefined ? categories[0] : undefined;
+			const authorsString =
+				typeof authors !== "undefined" ? authors.join(", ") : undefined;
 			return (
 				<BookItem key={id}>
-					<a href="#">
+					<Link to={`/${id}`} onClick={() => handleBook(id)}>
 						<BookImage>
 							<img src={image} alt="book" />
 						</BookImage>
 						<BookTitle>{title}</BookTitle>
-						<BookCategory>{categories}</BookCategory>
-						<BookAuthors>{authors}</BookAuthors>
-					</a>
+						<BookCategory>{category}</BookCategory>
+						<BookAuthors>{authorsString}</BookAuthors>
+					</Link>
 				</BookItem>
 			);
 		});

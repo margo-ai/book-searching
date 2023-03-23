@@ -25,6 +25,7 @@ export const fetchBooks = createAsyncThunk(
 		}&orderBy=${
 			sortedBy ? sortedBy : "relevance"
 		}&maxResults=30&${_apiKey}`;
+
 		const response = await fetch(url);
 		const data = await response.json();
 		console.log(url);
@@ -56,6 +57,7 @@ const booksSlice = createSlice({
 	reducers: {
 		setSearchName: (state, action) => {
 			state.searchName = action.payload;
+			state.booksLoadingStatus = "idle";
 		},
 		setCategory: (state, action) => {
 			state.category = action.payload;
@@ -77,6 +79,8 @@ const booksSlice = createSlice({
 		builder
 			.addCase(fetchBooks.pending, (state) => {
 				state.booksLoadingStatus = "loading";
+				state.books = [];
+				state.totalItems = 0;
 			})
 			.addCase(fetchBooks.fulfilled, (state, action) => {
 				state.booksLoadingStatus = "idle";

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {keyframes} from "styled-components";
 
 import searchIcon from "../../assets/img/search-icon.svg";
 
@@ -18,7 +17,9 @@ const Header = styled.header`
 	justify-content: center;
 	/* align-items: center; */
 
-	border: 4px solid black;
+	border: 1px solid grey;
+	background-color: #f4f2ef;
+	border-radius: 5px;
 	padding: 20px 0;
 `;
 
@@ -63,9 +64,17 @@ const SearchButton = styled.button`
 	border-left: none;
 	cursor: pointer;
 	border-radius: 5px;
-	transition: all 1s ease;
+	opacity: 1;
+	transition: all 0.5s ease;
 	&:hover {
-		background-color: grey;
+		opacity: 0.5;
+		border: 1px solid black;
+		border-left: none;
+
+		& img {
+			transition: all 0.5s ease;
+			transform: scale(1.2);
+		}
 	}
 
 	& img {

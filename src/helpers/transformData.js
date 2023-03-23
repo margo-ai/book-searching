@@ -5,7 +5,7 @@ export const _transformBooks = (book) => {
 		id: nanoid(),
 		title: book.volumeInfo.title,
 		authors: book.volumeInfo.authors,
-		description: book.volumeInfo.desciption,
+		description: book.volumeInfo.description,
 		categories: book.volumeInfo.categories,
 		image: book.volumeInfo.imageLinks.thumbnail,
 	};
