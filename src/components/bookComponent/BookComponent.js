@@ -1,8 +1,8 @@
+import {useNavigate} from "react-router-dom";
+// import {useEffect} from "react";
 // import {useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {setBook} from "../../reducers/booksSlice";
+// import {useDispatch, useSelector} from "react-redux";
+// import {setBook} from "../../reducers/booksSlice";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -32,7 +32,7 @@ const Authors = styled.div`
 	font-size: 22px;
 	font-style: italic;
 
-	margin-top: 10px;
+	margin-top: 15px;
 `;
 
 const Title = styled.h2`
@@ -52,7 +52,23 @@ const Categories = styled.div`
 	margin-top: auto;
 `;
 
+const BackButton = styled.button`
+	display: block;
+	width: 200px;
+	padding: 5px;
+	background-color: #fff;
+	border: 1px solid grey;
+	border-radius: 4px;
+	cursor: pointer;
+	align-self: flex-end;
+	transition: all 0.5s ease;
+	&:hover {
+		box-shadow: 0px 0px 14px 5px rgba(34, 60, 80, 0.2);
+	}
+`;
+
 const BookComponent = () => {
+	const navigate = useNavigate();
 	// const bookId = useParams();
 	// const dispatch = useDispatch();
 	// const selectedBook = useSelector((state) => state.books.selectedBook);
@@ -74,6 +90,7 @@ const BookComponent = () => {
 					<img src={image} alt="" />
 				</ImageBlock>
 				<InfoBlock>
+					<BackButton onClick={() => navigate(-1)}>Back</BackButton>
 					<Authors>{authorsString}</Authors>
 					<Title>{title}</Title>
 					<Dedcription>{description}</Dedcription>

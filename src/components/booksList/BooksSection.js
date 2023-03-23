@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useEffect} from "react";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {FallingLines} from "react-loader-spinner";
@@ -129,7 +129,7 @@ const BooksSection = () => {
 
 	function loadBooks() {
 		const newStartIndex = startIndex + 30;
-		dispatch(setStartIndex(newStartIndex + 30));
+		dispatch(setStartIndex(newStartIndex));
 		dispatch(
 			fetchMoreBooks({searchValue, category, sortedBy, newStartIndex})
 		);
@@ -167,7 +167,7 @@ const BooksSection = () => {
 	const books = renderItems(booksList);
 
 	const errorMessage =
-		booksLoadingStatus === "error" ? "Loading error! Try again" : null;
+		booksLoadingStatus === "error" ? <ErrorMessage /> : null;
 	const spinner =
 		booksLoadingStatus === "loading" ? (
 			<SpinnerWrapper>
