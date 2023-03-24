@@ -57,7 +57,10 @@ const BooksSection = () => {
 				typeof authors !== "undefined" ? authors.join(", ") : undefined;
 			return (
 				<BookItem key={id}>
-					<Link to={`/${id}`} onClick={() => handleBook(id)}>
+					<Link
+						to={`/book-searching/${id}`}
+						onClick={() => handleBook(id)}
+					>
 						<BookImage>
 							<img src={image} alt="book" />
 						</BookImage>
