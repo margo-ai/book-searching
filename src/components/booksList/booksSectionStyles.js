@@ -24,9 +24,6 @@ export const BooksCount = styled.div`
 		margin-bottom: 5px;
 		font-size: 12px;
 	}
-	@media (max-width: 420px) {
-		font-size: 10px;
-	}
 `;
 
 export const BookListContainer = styled.div`
@@ -48,9 +45,6 @@ export const BookListContainer = styled.div`
 	@media (max-width: 420px) {
 		padding: 10px 15px;
 		margin-bottom: 10px;
-	}
-	@media (max-width: 390px) {
-		padding: 10px 30px;
 	}
 `;
 
@@ -143,11 +137,7 @@ export const BookImage = styled.div`
 		margin-bottom: 10px;
 	}
 	@media (max-width: 490px) {
-		height: 110px;
-	}
-	@media (max-width: 390px) {
-		height: 100px;
-		margin-bottom: 8px;
+		height: 130px;
 	}
 
 	& img {
@@ -172,19 +162,14 @@ export const BookTitle = styled.h3`
 	}
 
 	@media (max-width: 830px) {
-		font-size: 15px;
-		line-height: 16px;
+		font-size: 18px;
+		line-height: 17px;
 	}
 	@media (max-width: 630px) {
 		margin-bottom: 12px;
 	}
 	@media (max-width: 490px) {
-		font-size: 12px;
-		line-height: 14px;
 		margin-bottom: 8px;
-	}
-	@media (max-width: 390px) {
-		margin-bottom: 5px;
 	}
 `;
 
@@ -195,9 +180,6 @@ export const BookCategory = styled.div`
 	}
 	@media (max-width: 830px) {
 		font-size: 12px;
-	}
-	@media (max-width: 490px) {
-		font-size: 10px;
 	}
 `;
 
@@ -213,9 +195,6 @@ export const BookAuthors = styled.div`
 	}
 	@media (max-width: 630px) {
 		font-size: 12px;
-	}
-	@media (max-width: 490px) {
-		font-size: 10px;
 	}
 `;
 
@@ -255,11 +234,7 @@ export const LoadMoreButton = styled.button`
 	@media (max-width: 680px) {
 		font-size: 12px;
 		padding: 4px;
-		width: 25%;
-	}
-	@media (max-width: 422px) {
-		font-size: 10px;
-		padding: 2px;
+		width: 35%;
 	}
 `;
 
@@ -305,11 +280,7 @@ export const MoreBooksSpinner = styled.div`
 		height: 20px;
 	}
 	@media (max-width: 680px) {
-		width: 15px;
-		height: 15px;
-	}
-	@media (max-width: 422px) {
-		width: 13px;
-		height: 13px;
+		width: 16px;
+		height: 16px;
 	}
 `;

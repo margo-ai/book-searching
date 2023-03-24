@@ -22,10 +22,6 @@ export const Container = styled.div`
 		padding: 15px;
 		margin-top: 10px;
 	}
-	@media (max-width: 390px) {
-		padding: 10px 20px;
-		margin-top: 7px;
-	}
 `;
 
 export const BookInfo = styled.div`
@@ -50,9 +46,6 @@ export const ImageBlock = styled.div`
 	}
 	@media (max-width: 490px) {
 		width: 150px;
-	}
-	@media (max-width: 390px) {
-		width: 120px;
 	}
 	& img {
 		width: 100%;
@@ -88,10 +81,6 @@ export const Authors = styled.div`
 		font-size: 10px;
 		margin-top: 7px;
 	}
-	@media (max-width: 390px) {
-		font-size: 8px;
-		margin-top: 5px;
-	}
 `;
 
 export const Title = styled.h2`
@@ -115,10 +104,6 @@ export const Title = styled.h2`
 	@media (max-width: 490px) {
 		font-size: 16px;
 		line-height: 18px;
-	}
-	@media (max-width: 390px) {
-		font-size: 13px;
-		line-height: 15px;
 	}
 `;
 
@@ -147,12 +132,6 @@ export const Description = styled.p`
 		font-size: 12px;
 		line-height: 16px;
 	}
-	@media (max-width: 390px) {
-		font-size: 9px;
-		line-height: 12px;
-		margin-top: 7px;
-		margin-bottom: 8px;
-	}
 `;
 
 export const Categories = styled.div`
@@ -167,9 +146,6 @@ export const Categories = styled.div`
 	}
 	@media (max-width: 490px) {
 		font-size: 12px;
-	}
-	@media (max-width: 390px) {
-		font-size: 9px;
 	}
 `;
 
@@ -204,13 +180,5 @@ export const BackButton = styled.button`
 	@media (max-width: 630px) {
 		font-size: 12px;
 		width: 90px;
-	}
-	@media (max-width: 490px) {
-		font-size: 10px;
-		width: 80px;
-	}
-	@media (max-width: 390px) {
-		font-size: 8px;
-		width: 60px;
 	}
 `;

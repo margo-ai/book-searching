@@ -4,7 +4,6 @@ export const Header = styled.header`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* align-items: center; */
 
 	border: 1px solid grey;
 	background-color: #f4f2ef;
@@ -41,13 +40,6 @@ export const Title = styled.h1`
 		font-size: 26px;
 		margin-bottom: 10px;
 	}
-	@media (max-width: 490px) {
-		font-size: 22px;
-	}
-	@media (max-width: 420px) {
-		font-size: 18px;
-		margin-bottom: 6px;
-	}
 `;
 
 export const SearchFiltersBlock = styled.div`
@@ -72,9 +64,6 @@ export const SearchFiltersBlock = styled.div`
 	@media (max-width: 490px) {
 		padding: 0 10px;
 	}
-	@media (max-width: 420px) {
-		padding: 0 5px;
-	}
 `;
 
 export const SearchForm = styled.form`
@@ -97,14 +86,8 @@ export const SearchForm = styled.form`
 		width: 45%;
 	}
 	@media (max-width: 490px) {
-		width: 40%;
-	}
-	@media (max-width: 490px) {
+		width: 60%;
 		margin-bottom: 8px;
-	}
-	@media (max-width: 420px) {
-		width: 35%;
-		margin-bottom: 5px;
 	}
 `;
 
@@ -133,16 +116,7 @@ export const SearchInput = styled.input`
 	@media (max-width: 630px) {
 		height: 25px;
 		padding: 7px;
-		font-size: 13px;
-	}
-	@media (max-width: 490px) {
-		height: 18px;
-		font-size: 10px;
-	}
-	@media (max-width: 420px) {
-		height: 15px;
-		padding: 4px;
-		font-size: 8px;
+		font-size: 12px;
 	}
 `;
 
@@ -173,14 +147,6 @@ export const SearchButton = styled.button`
 	@media (max-width: 630px) {
 		height: 25px;
 		width: 25px;
-	}
-	@media (max-width: 490px) {
-		width: 18px;
-		height: 18px;
-	}
-	@media (max-width: 420px) {
-		width: 15px;
-		height: 15px;
 	}
 
 	&:hover {
@@ -240,13 +206,7 @@ export const CategoriesForm = styled.form`
 			margin-right: 5px;
 		}
 		@media (max-width: 630px) {
-			font-size: 13px;
-		}
-		@media (max-width: 490px) {
-			font-size: 10px;
-		}
-		@media (max-width: 420px) {
-			font-size: 8px;
+			font-size: 12px;
 		}
 	}
 
@@ -273,17 +233,8 @@ export const CategoriesForm = styled.form`
 			padding: 2px;
 		}
 		@media (max-width: 630px) {
-			font-size: 13px;
+			font-size: 12px;
 			height: 25px;
-		}
-		@media (max-width: 490px) {
-			font-size: 10px;
-			height: 18px;
-		}
-		@media (max-width: 420px) {
-			height: 15px;
-			font-size: 8px;
-			padding: 1px;
 		}
 	}
 `;
@@ -306,15 +257,10 @@ export const SortingForm = styled.form`
 			width: 100px;
 		}
 		@media (max-width: 630px) {
-			font-size: 13px;
+			font-size: 12px;
 		}
 		@media (max-width: 490px) {
-			font-size: 10px;
-			width: 65px;
-		}
-		@media (max-width: 420px) {
-			font-size: 8px;
-			width: 50px;
+			width: 85px;
 		}
 	}
 
@@ -342,17 +288,7 @@ export const SortingForm = styled.form`
 		}
 		@media (max-width: 630px) {
 			height: 25px;
-			font-size: 13px;
-		}
-		@media (max-width: 490px) {
-			height: 18px;
-			font-size: 10px;
-			padding: 2px;
-		}
-		@media (max-width: 420px) {
-			height: 15px;
-			font-size: 8px;
-			padding: 1px;
+			font-size: 12px;
 		}
 	}
 `;
@@ -365,4 +301,18 @@ export const ErrorText = styled.div`
 	top: -25px;
 	left: 50%;
 	transform: translateX(-50%);
+
+	@media (max-width: 910px) {
+		font-size: 12px;
+		top: -20px;
+	}
+	@media (max-width: 830px) {
+		left: -55px;
+		top: 5px;
+	}
+	@media (max-width: 490px) {
+		top: -15px;
+		left: 10px;
+		transform: none;
+	}
 `;
