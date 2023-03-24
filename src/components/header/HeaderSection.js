@@ -22,6 +22,12 @@ const Header = styled.header`
 	background-color: #f4f2ef;
 	border-radius: 5px;
 	padding: 20px 0;
+	@media (max-width: 830px) {
+		padding: 15px 0;
+	}
+	@media (max-width: 630px) {
+		padding: 10px 0;
+	}
 `;
 
 const Title = styled.h1`
@@ -39,11 +45,27 @@ const Title = styled.h1`
 		font-size: 35px;
 		margin-bottom: 25px;
 	}
+	@media (max-width: 830px) {
+		font-size: 30px;
+		margin-bottom: 20px;
+	}
+	@media (max-width: 830px) {
+		font-size: 26px;
+		margin-bottom: 10px;
+	}
+	@media (max-width: 490px) {
+		font-size: 22px;
+	}
+	@media (max-width: 420px) {
+		font-size: 18px;
+		margin-bottom: 6px;
+	}
 `;
 
 const SearchFiltersBlock = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 0 60px;
 
 	@media (max-width: 1180px) {
@@ -51,6 +73,19 @@ const SearchFiltersBlock = styled.div`
 	}
 	@media (max-width: 1000px) {
 		padding: 0 28px;
+	}
+	@media (max-width: 830px) {
+		flex-direction: column;
+		padding: 0 25px;
+	}
+	@media (max-width: 830px) {
+		padding: 0 15px;
+	}
+	@media (max-width: 490px) {
+		padding: 0 10px;
+	}
+	@media (max-width: 420px) {
+		padding: 0 5px;
 	}
 `;
 
@@ -64,6 +99,24 @@ const SearchForm = styled.form`
 	}
 	@media (max-width: 1000px) {
 		margin-right: 12px;
+	}
+	@media (max-width: 830px) {
+		width: 50%;
+		margin-right: 0;
+		margin-bottom: 15px;
+	}
+	@media (max-width: 630px) {
+		width: 45%;
+	}
+	@media (max-width: 490px) {
+		width: 40%;
+	}
+	@media (max-width: 490px) {
+		margin-bottom: 8px;
+	}
+	@media (max-width: 420px) {
+		width: 35%;
+		margin-bottom: 5px;
 	}
 `;
 
@@ -84,6 +137,24 @@ const SearchInput = styled.input`
 	}
 	@media (max-width: 1180px) {
 		font-size: 18px;
+	}
+	@media (max-width: 830px) {
+		height: 35px;
+		font-size: 15px;
+	}
+	@media (max-width: 630px) {
+		height: 25px;
+		padding: 7px;
+		font-size: 13px;
+	}
+	@media (max-width: 490px) {
+		height: 18px;
+		font-size: 10px;
+	}
+	@media (max-width: 420px) {
+		height: 15px;
+		padding: 4px;
+		font-size: 8px;
 	}
 `;
 
@@ -106,6 +177,22 @@ const SearchButton = styled.button`
 	@media (max-width: 1300px) {
 		height: 40px;
 		width: 40px;
+	}
+	@media (max-width: 830px) {
+		height: 35px;
+		width: 35px;
+	}
+	@media (max-width: 630px) {
+		height: 25px;
+		width: 25px;
+	}
+	@media (max-width: 490px) {
+		width: 18px;
+		height: 18px;
+	}
+	@media (max-width: 420px) {
+		width: 15px;
+		height: 15px;
 	}
 
 	&:hover {
@@ -143,6 +230,15 @@ const CategoriesForm = styled.form`
 	@media (max-width: 1000px) {
 		margin-right: 10px;
 	}
+	@media (max-width: 830px) {
+		margin-right: 30px;
+	}
+	@media (max-width: 630px) {
+		margin-right: 15px;
+	}
+	@media (max-width: 490px) {
+		margin-right: 10px;
+	}
 
 	& label {
 		margin-right: 15px;
@@ -152,10 +248,24 @@ const CategoriesForm = styled.form`
 		@media (max-width: 1000px) {
 			margin-right: 8px;
 		}
+		@media (max-width: 830px) {
+			font-size: 15px;
+			margin-right: 5px;
+		}
+		@media (max-width: 630px) {
+			font-size: 13px;
+		}
+		@media (max-width: 490px) {
+			font-size: 10px;
+		}
+		@media (max-width: 420px) {
+			font-size: 8px;
+		}
 	}
 
 	& select {
 		cursor: pointer;
+		height: 50px;
 
 		width: 100%;
 		padding: 10px;
@@ -166,9 +276,28 @@ const CategoriesForm = styled.form`
 		}
 		@media (max-width: 1300px) {
 			padding: 4px;
+			height: 40px;
 		}
 		@media (max-width: 1180px) {
 			font-size: 18px;
+		}
+		@media (max-width: 830px) {
+			height: 35px;
+			font-size: 15px;
+			padding: 2px;
+		}
+		@media (max-width: 630px) {
+			font-size: 13px;
+			height: 25px;
+		}
+		@media (max-width: 490px) {
+			font-size: 10px;
+			height: 18px;
+		}
+		@media (max-width: 420px) {
+			height: 15px;
+			font-size: 8px;
+			padding: 1px;
 		}
 	}
 `;
@@ -184,11 +313,28 @@ const SortingForm = styled.form`
 		}
 		@media (max-width: 1000px) {
 			margin-right: 5px;
+			width: 125px;
+		}
+		@media (max-width: 830px) {
+			font-size: 15px;
+			width: 100px;
+		}
+		@media (max-width: 630px) {
+			font-size: 13px;
+		}
+		@media (max-width: 490px) {
+			font-size: 10px;
+			width: 65px;
+		}
+		@media (max-width: 420px) {
+			font-size: 8px;
+			width: 50px;
 		}
 	}
 
 	& select {
 		cursor: pointer;
+		height: 50px;
 
 		width: 100%;
 		padding: 10px;
@@ -199,9 +345,28 @@ const SortingForm = styled.form`
 		}
 		@media (max-width: 1300px) {
 			padding: 4px;
+			height: 40px;
 		}
 		@media (max-width: 1180px) {
 			font-size: 18px;
+		}
+		@media (max-width: 830px) {
+			height: 35px;
+			font-size: 15px;
+		}
+		@media (max-width: 630px) {
+			height: 25px;
+			font-size: 13px;
+		}
+		@media (max-width: 490px) {
+			height: 18px;
+			font-size: 10px;
+			padding: 2px;
+		}
+		@media (max-width: 420px) {
+			height: 15px;
+			font-size: 8px;
+			padding: 1px;
 		}
 	}
 `;

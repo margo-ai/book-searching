@@ -1,14 +1,11 @@
 import styled from "styled-components";
+import {keyframes} from "styled-components";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {FallingLines, InfinitySpin} from "react-loader-spinner";
+import {FallingLines} from "react-loader-spinner";
 
-import {
-	fetchMoreBooks,
-	setStartIndex,
-	setBoooksList,
-} from "../../reducers/booksSlice";
+import {fetchMoreBooks, setStartIndex} from "../../reducers/booksSlice";
 
 const BooksCount = styled.div`
 	margin-top: 30px;
@@ -24,6 +21,18 @@ const BooksCount = styled.div`
 		margin-top: 18px;
 		margin-bottom: 10px;
 	}
+	@media (max-width: 830px) {
+		font-size: 14px;
+		margin-top: 10px;
+	}
+	@media (max-width: 630px) {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		font-size: 12px;
+	}
+	@media (max-width: 420px) {
+		font-size: 10px;
+	}
 `;
 
 const BookListContainer = styled.div`
@@ -33,6 +42,22 @@ const BookListContainer = styled.div`
 	border: 1px solid grey;
 	background-color: #f4f2ef;
 	border-radius: 5px;
+	@media (max-width: 830px) {
+		padding: 15px 30px;
+	}
+	@media (max-width: 680px) {
+		margin-bottom: 12px;
+	}
+	@media (max-width: 490px) {
+		padding: 10px 23px;
+	}
+	@media (max-width: 420px) {
+		padding: 10px 15px;
+		margin-bottom: 10px;
+	}
+	@media (max-width: 390px) {
+		padding: 10px 30px;
+	}
 `;
 
 const BooksList = styled.ul`
@@ -49,7 +74,27 @@ const BooksList = styled.ul`
 	}
 	@media (max-width: 1000px) {
 		grid-template-columns: repeat(2, 1fr);
-		gap: 50px 50px;
+		gap: 50px;
+		margin-top: 30px;
+	}
+	@media (max-width: 830px) {
+		gap: 35px;
+		margin-top: 25px;
+	}
+	@media (max-width: 550px) {
+		gap: 25px;
+		margin-top: 15px;
+	}
+	@media (max-width: 490px) {
+		gap: 20px 30px;
+		margin-top: 10px;
+	}
+	@media (max-width: 420px) {
+		gap: 15px 20px;
+	}
+	@media (max-width: 390px) {
+		grid-template-columns: repeat(1, 1fr);
+		margin-top: 5px;
 	}
 `;
 
@@ -71,7 +116,12 @@ const BookItem = styled.li`
 		min-height: 100%;
 
 		padding: 15px;
-		/* border: 1px solid grey; */
+		@media (max-width: 830px) {
+			padding: 12px;
+		}
+		@media (max-width: 630px) {
+			padding: 10px;
+		}
 	}
 
 	&:hover a {
@@ -89,6 +139,21 @@ const BookImage = styled.div`
 	}
 	@media (max-width: 1180px) {
 		height: 250px;
+	}
+	@media (max-width: 830px) {
+		height: 200px;
+		margin-bottom: 15px;
+	}
+	@media (max-width: 630px) {
+		height: 150px;
+		margin-bottom: 10px;
+	}
+	@media (max-width: 490px) {
+		height: 110px;
+	}
+	@media (max-width: 390px) {
+		height: 100px;
+		margin-bottom: 8px;
 	}
 
 	& img {
@@ -111,12 +176,34 @@ const BookTitle = styled.h3`
 	@media (max-width: 1000px) {
 		font-size: 20px;
 	}
+
+	@media (max-width: 830px) {
+		font-size: 15px;
+		line-height: 16px;
+	}
+	@media (max-width: 630px) {
+		margin-bottom: 12px;
+	}
+	@media (max-width: 490px) {
+		font-size: 12px;
+		line-height: 14px;
+		margin-bottom: 8px;
+	}
+	@media (max-width: 390px) {
+		margin-bottom: 5px;
+	}
 `;
 
 const BookCategory = styled.div`
 	font-size: 18px;
 	@media (max-width: 1180px) {
 		font-size: 16px;
+	}
+	@media (max-width: 830px) {
+		font-size: 12px;
+	}
+	@media (max-width: 490px) {
+		font-size: 10px;
 	}
 `;
 
@@ -126,6 +213,15 @@ const BookAuthors = styled.div`
 	font-style: italic;
 	@media (max-width: 1180px) {
 		font-size: 15px;
+	}
+	@media (max-width: 830px) {
+		font-size: 14px;
+	}
+	@media (max-width: 630px) {
+		font-size: 12px;
+	}
+	@media (max-width: 490px) {
+		font-size: 10px;
 	}
 `;
 
@@ -157,6 +253,20 @@ const LoadMoreButton = styled.button`
 	@media (max-width: 1180px) {
 		width: 25%;
 		font-size: 19px;
+		padding: 8px;
+	}
+	@media (max-width: 830px) {
+		font-size: 15px;
+		padding: 6px;
+	}
+	@media (max-width: 680px) {
+		font-size: 12px;
+		padding: 4px;
+		width: 25%;
+	}
+	@media (max-width: 422px) {
+		font-size: 10px;
+		padding: 2px;
 	}
 `;
 
@@ -166,6 +276,49 @@ const ListPlaceholder = styled.div`
 	align-items: center;
 	font-size: 23px;
 	margin-top: 15px;
+	@media (max-width: 830px) {
+		font-size: 18px;
+	}
+	@media (max-width: 630px) {
+		font-size: 14px;
+		margin-top: 8px;
+	}
+	@media (max-width: 490px) {
+		font-size: 12px;
+	}
+`;
+
+const spinAmimation = keyframes`
+	0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+`;
+
+const MoreBooksSpinner = styled.div`
+	border: 5px solid lightgray;
+	border-top: 5px solid #c19a6b;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation-name: ${spinAmimation};
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	@media (max-width: 1180px) {
+		width: 25px;
+		height: 25px;
+	}
+	@media (max-width: 830px) {
+		width: 20px;
+		height: 20px;
+	}
+	@media (max-width: 680px) {
+		width: 15px;
+		height: 15px;
+	}
+	@media (max-width: 422px) {
+		width: 13px;
+		height: 13px;
+	}
 `;
 
 const BooksSection = () => {
@@ -230,16 +383,14 @@ const BooksSection = () => {
 	const spinner =
 		booksLoadingStatus === "loading" ? (
 			<SpinnerWrapper>
-				<FallingLines height={100} width={100} color="#c19a6b" />
+				<FallingLines height={80} width={80} color="#c19a6b" />
 			</SpinnerWrapper>
 		) : null;
 
 	const moreBooksErrorMessage =
 		moreBooksLoadingStatus === "error" ? "Error! Try Again" : null;
 	const moreBooksSpinner =
-		moreBooksLoadingStatus === "loading" ? (
-			<FallingLines width={50} height={40} color="#c19a6b" />
-		) : null;
+		moreBooksLoadingStatus === "loading" ? <MoreBooksSpinner /> : null;
 	const buttonText =
 		moreBooksLoadingStatus !== "error" &&
 		moreBooksLoadingStatus !== "loading"
