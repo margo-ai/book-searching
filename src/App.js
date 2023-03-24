@@ -30,8 +30,11 @@ function App() {
 			<BrowserRouter>
 				<HeaderSection />
 				<Routes>
-					<Route path="/" element={<BooksSection />} />
-					<Route path="/:bookId" element={<BookComponent />} />
+					<Route path="/book-searching" element={<BooksSection />} />
+					<Route
+						path="/book-searching/:bookId"
+						element={<BookComponent />}
+					/>
 					<Route path="*" element={<BooksSection />} />
 				</Routes>
 			</BrowserRouter>
