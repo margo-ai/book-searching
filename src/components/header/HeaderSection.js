@@ -73,6 +73,12 @@ const SearchInput = styled.input`
 	padding: 10px;
 	border: 1px solid grey;
 	border-radius: 5px;
+
+	&:hover,
+	&:focus {
+		border-color: #c19a6b;
+	}
+
 	@media (max-width: 1300px) {
 		height: 40px;
 	}
@@ -106,11 +112,7 @@ const SearchButton = styled.button`
 		opacity: 0.5;
 		border: 1px solid black;
 		border-left: none;
-
-		& img {
-			transition: all 0.5s ease;
-			transform: scale(1.2);
-		}
+		border-color: #c19a6b;
 	}
 
 	& img {
@@ -158,6 +160,10 @@ const CategoriesForm = styled.form`
 		width: 100%;
 		padding: 10px;
 		border-radius: 5px;
+		&:hover,
+		&:focus {
+			border-color: #c19a6b;
+		}
 		@media (max-width: 1300px) {
 			padding: 4px;
 		}
@@ -187,6 +193,10 @@ const SortingForm = styled.form`
 		width: 100%;
 		padding: 10px;
 		border-radius: 5px;
+		&:hover,
+		&:focus {
+			border-color: #c19a6b;
+		}
 		@media (max-width: 1300px) {
 			padding: 4px;
 		}

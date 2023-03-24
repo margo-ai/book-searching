@@ -8,6 +8,7 @@ const initialState = {
 	category: "all",
 	sortedBy: "",
 	booksLoadingStatus: "idle",
+	moreBooksLoadingStatus: "idle",
 	selectedBook: null,
 	totalItems: 0,
 	startIndex: 0,
@@ -91,14 +92,14 @@ const booksSlice = createSlice({
 				state.booksLoadingStatus = "error";
 			})
 			.addCase(fetchMoreBooks.pending, (state) => {
-				state.booksLoadingStatus = "loading";
+				state.moreBooksLoadingStatus = "loading";
 			})
 			.addCase(fetchMoreBooks.fulfilled, (state, action) => {
-				state.booksLoadingStatus = "idle";
+				state.moreBooksLoadingStatus = "idle";
 				state.books = state.books.concat(action.payload);
 			})
 			.addCase(fetchMoreBooks.rejected, (state) => {
-				state.booksLoadingStatus = "error";
+				state.moreBooksLoadingStatus = "error";
 			})
 			.addDefaultCase(() => {});
 	},

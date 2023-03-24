@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {FallingLines} from "react-loader-spinner";
+import {FallingLines, InfinitySpin} from "react-loader-spinner";
 
 import {
 	fetchMoreBooks,
@@ -136,8 +136,11 @@ const SpinnerWrapper = styled.div`
 `;
 
 const LoadMoreButton = styled.button`
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin: 0 auto;
+	max-height: 50px;
 	width: 20%;
 	padding: 10px;
 	color: #000;
@@ -169,6 +172,9 @@ const BooksSection = () => {
 	const dispatch = useDispatch();
 	const booksLoadingStatus = useSelector(
 		(state) => state.books.booksLoadingStatus
+	);
+	const moreBooksLoadingStatus = useSelector(
+		(state) => state.books.moreBooksLoadingStatus
 	);
 	const booksList = useSelector((state) => state.books.books);
 	const totalItems = useSelector((state) => state.books.totalItems);
@@ -224,9 +230,21 @@ const BooksSection = () => {
 	const spinner =
 		booksLoadingStatus === "loading" ? (
 			<SpinnerWrapper>
-				<FallingLines height={150} width={150} color="#000" />
+				<FallingLines height={100} width={100} color="#c19a6b" />
 			</SpinnerWrapper>
 		) : null;
+
+	const moreBooksErrorMessage =
+		moreBooksLoadingStatus === "error" ? "Error! Try Again" : null;
+	const moreBooksSpinner =
+		moreBooksLoadingStatus === "loading" ? (
+			<FallingLines width={50} height={40} color="#c19a6b" />
+		) : null;
+	const buttonText =
+		moreBooksLoadingStatus !== "error" &&
+		moreBooksLoadingStatus !== "loading"
+			? "Load more books"
+			: null;
 
 	return (
 		<>
@@ -248,7 +266,9 @@ const BooksSection = () => {
 			</BookListContainer>
 			{booksList.length !== 0 ? (
 				<LoadMoreButton onClick={loadBooks}>
-					Load more books
+					{moreBooksErrorMessage}
+					{moreBooksSpinner}
+					{buttonText}
 				</LoadMoreButton>
 			) : null}
 		</>

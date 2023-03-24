@@ -88,7 +88,9 @@ const BackButton = styled.button`
 	align-self: flex-end;
 	transition: all 0.5s ease;
 	&:hover {
-		box-shadow: 0px 0px 14px 5px rgba(34, 60, 80, 0.2);
+		opacity: 0.5;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+			rgb(51, 51, 51) 0px 0px 0px 3px;
 	}
 	@media (max-width: 1180px) {
 		width: 190px;
