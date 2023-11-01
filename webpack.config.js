@@ -104,11 +104,11 @@ module.exports = (_, args) => {
                 filename: 'css/[name].css',
                 chunkFilename: 'css/[name].css',
             }),
-            // new ForkTsCheckerWebpackPlugin({
-            // 	typescript: {
-            // 		configFile: path.join(__dirname, "tsconfig.json"),
-            // 	},
-            // }),
+            new ForkTsCheckerWebpackPlugin({
+                typescript: {
+                    configFile: path.join(__dirname, 'tsconfig.json'),
+                },
+            }),
         ],
     };
 };

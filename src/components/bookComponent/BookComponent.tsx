@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TransformedBookType } from '../../types/types';
 
 import {
     Container,
@@ -13,18 +14,18 @@ import {
     BackButton,
 } from './bookComponentStyles';
 
-const BookComponent = () => {
+const BookComponent = (): React.ReactElement => {
     const navigate = useNavigate();
 
     function getBook() {
         const selectedBookId = localStorage.getItem('bookId');
         const allBooks = JSON.parse(localStorage.getItem('bookList'));
-        return allBooks.find((item) => item.id === selectedBookId);
+        return allBooks.find((item: TransformedBookType) => item.id === selectedBookId);
     }
 
     const bookData = getBook();
 
-    function renderBook(book) {
+    function renderBook(book: TransformedBookType) {
         const { authors, categories, image, title, description } = book;
         const authorsString = typeof authors !== 'undefined' ? authors.join(', ') : undefined;
         return (

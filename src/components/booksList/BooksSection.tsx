@@ -1,10 +1,11 @@
 import React from 'react';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../helpers/hooks';
+import { TransformedBookType } from '../../types/types';
 import { FallingLines } from 'react-loader-spinner';
 
-import { fetchMoreBooks, setStartIndex } from '../../reducers/booksSlice';
+import { fetchMoreBooks, setStartIndex, setBook } from '../../reducers/booksSlice';
 import {
     BooksCount,
     BookListContainer,
@@ -20,17 +21,17 @@ import {
     MoreBooksSpinner,
 } from './booksSectionStyles';
 
-const BooksSection = () => {
-    const dispatch = useDispatch();
-    const booksLoadingStatus = useSelector((state) => state.books.booksLoadingStatus);
-    const moreBooksLoadingStatus = useSelector((state) => state.books.moreBooksLoadingStatus);
-    const booksList = useSelector((state) => state.books.books);
-    const totalItems = useSelector((state) => state.books.totalItems);
+const BooksSection = (): React.ReactElement => {
+    const dispatch = useAppDispatch();
+    const booksLoadingStatus = useAppSelector((state) => state.books.booksLoadingStatus);
+    const moreBooksLoadingStatus = useAppSelector((state) => state.books.moreBooksLoadingStatus);
+    const booksList = useAppSelector((state) => state.books.books);
+    const totalItems = useAppSelector((state) => state.books.totalItems);
 
-    const searchValue = useSelector((state) => state.books.searchName);
-    const sortedBy = useSelector((state) => state.books.sortedBy);
-    const category = useSelector((state) => state.books.category);
-    const startIndex = useSelector((state) => state.books.startIndex);
+    const searchValue = useAppSelector((state) => state.books.searchName);
+    const sortedBy = useAppSelector((state) => state.books.sortedBy);
+    const category = useAppSelector((state) => state.books.category);
+    const startIndex = useAppSelector((state) => state.books.startIndex);
 
     function loadBooks() {
         const newStartIndex = startIndex + 30;
@@ -38,13 +39,15 @@ const BooksSection = () => {
         dispatch(fetchMoreBooks({ searchValue, category, sortedBy, newStartIndex }));
     }
 
-    function handleBook(bookId) {
+    function handleBook(bookId: string) {
         localStorage.setItem('bookId', bookId);
         localStorage.setItem('bookList', JSON.stringify(booksList));
+        console.log(booksList);
+        dispatch(setBook(bookId));
     }
 
-    function renderItems(array) {
-        const items = array.map((item) => {
+    function renderItems(array: TransformedBookType[]) {
+        const items = array.map((item: TransformedBookType) => {
             const { id, title, authors, image, categories } = item;
             const category = categories !== undefined ? categories[0] : undefined;
             const authorsString = typeof authors !== 'undefined' ? authors.join(', ') : undefined;
@@ -72,7 +75,7 @@ const BooksSection = () => {
     const spinner =
         booksLoadingStatus === 'loading' ? (
             <SpinnerWrapper>
-                <FallingLines height={80} width={80} color="#c19a6b" />
+                <FallingLines height="80" width="80" color="#c19a6b" />
             </SpinnerWrapper>
         ) : null;
 

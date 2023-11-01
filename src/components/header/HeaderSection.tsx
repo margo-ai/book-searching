@@ -1,7 +1,7 @@
 import React from 'react';
 import searchIcon from '../../assets/img/search-icon.svg';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../helpers/hooks';
 import {
     fetchBooks,
     setSearchName,
@@ -24,37 +24,35 @@ import {
     ErrorText,
 } from './headerSectionStyles';
 
-const HeaderSection = () => {
-    const dispatch = useDispatch();
-    const searchValue = useSelector((state) => state.books.searchName);
-    const sortedBy = useSelector((state) => state.books.sortedBy);
-    const category = useSelector((state) => state.books.category);
-    const searchError = useSelector((state) => state.books.inputError);
+const HeaderSection = (): React.ReactElement => {
+    const dispatch = useAppDispatch();
+    const searchValue = useAppSelector((state) => state.books.searchName);
+    const sortedBy = useAppSelector((state) => state.books.sortedBy);
+    const category = useAppSelector((state) => state.books.category);
+    const searchError = useAppSelector((state) => state.books.inputError);
 
-    function handleChange(e) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         dispatch(setSearchName(e.target.value));
-        console.log(searchValue);
     }
 
-    const searchBooks = (e) => {
+    const searchBooks = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (searchValue.length === 0) {
             dispatch(setInputError(true));
         } else {
             let terms = searchValue.replace(/ /g, '');
-            console.log(terms, sortedBy);
             dispatch(setStartIndex(0));
             dispatch(fetchBooks({ terms, category, sortedBy }));
             dispatch(setInputError(false));
         }
     };
 
-    function handleCategory(e) {
+    function handleCategory(e: React.ChangeEvent<HTMLSelectElement>) {
         dispatch(setCategory(e.target.value));
     }
 
-    function handleSortBy(e) {
+    function handleSortBy(e: React.ChangeEvent<HTMLSelectElement>) {
         dispatch(setSortBy(e.target.value));
     }
 
