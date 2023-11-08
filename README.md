@@ -2,6 +2,16 @@
 
 ### Описание: React-приложение для поиска и ознакомления с книгами.
 
+### Использованные технологии:
+
+-   Typescript
+-   React
+-   Redux Toolkit
+-   Ajax
+-   Styled Components
+-   Сборка с помощью Webpack
+-   Babel
+
 ### Реализованный функционал:
 
 -   Поиск книг по названию с возможностью подгрузки результатов.
@@ -18,13 +28,3 @@
 
 <!-- ![One news page](./screenshots/bookpage.jpg) -->
 <img src="./screenshots/bookpage.jpg" style="width: 600px" />
-
-### Использованные технологии:
-
--   Typescript
--   React
--   Redux Toolkit
--   Ajax
--   Styled Components
--   Сборка с помощью Webpack
--   Babel
