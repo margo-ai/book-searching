@@ -19,8 +19,7 @@ import {
     SearchInput,
     SearchButton,
     Filters,
-    CategoriesForm,
-    SortingForm,
+    FilterSelect,
     ErrorText,
 } from './headerSectionStyles';
 
@@ -75,7 +74,7 @@ const HeaderSection = (): React.ReactElement => {
                         </SearchButton>
                     </SearchForm>
                     <Filters>
-                        <CategoriesForm id="category">
+                        <FilterSelect id="category">
                             <label htmlFor="categories">Categories</label>
                             <select
                                 name="categories"
@@ -92,9 +91,9 @@ const HeaderSection = (): React.ReactElement => {
                                 <option value="medical">Medical</option>
                                 <option value="poetry">Poetry</option>
                             </select>
-                        </CategoriesForm>
-                        <SortingForm id="sorting">
-                            <label htmlFor="sorting">Sorting by</label>
+                        </FilterSelect>
+                        <FilterSelect id="sorting">
+                            <label htmlFor="sorting">Sort by</label>
                             <select
                                 name="sorting"
                                 id="sorting"
@@ -105,7 +104,7 @@ const HeaderSection = (): React.ReactElement => {
                                 <option value="relevance">Relevance</option>
                                 <option value="newest">Newest</option>
                             </select>
-                        </SortingForm>
+                        </FilterSelect>
                     </Filters>
                 </SearchFiltersBlock>
             </Header>

@@ -30,10 +30,7 @@ module.exports = (_, args) => {
         },
         output: {
             path: dist,
-            publicPath:
-                args.mode === 'development'
-                    ? `http://${host}:${port}/`
-                    : undefined /* <- прописать данные своего github */,
+            publicPath: args.mode === 'development' ? `http://${host}:${port}/` : undefined,
             filename: `js/[name].js`,
             chunkFilename: `js/[name].js`,
         },
@@ -45,45 +42,14 @@ module.exports = (_, args) => {
                     exclude: /node_modules/,
                 },
                 {
-                    test: /\.less$/,
-                    use: [
-                        {
-                            loader: MiniCssExtractPlugin.loader,
-                        },
-                        'css-loader',
-                        'less-loader',
-                    ],
-                },
-                {
-                    test: /\.css$/,
-                    use: [
-                        {
-                            loader: MiniCssExtractPlugin.loader,
-                        },
-                        'css-loader',
-                    ],
+                    test: /\.css$/i,
+                    use: [MiniCssExtractPlugin.loader, 'css-loader'],
                 },
                 {
                     test: /\.svg/,
                     type: 'asset/inline',
                 },
-                {
-                    test: /\.s[ac]ss$/i,
-                    use: [
-                        {
-                            loader: MiniCssExtractPlugin.loader,
-                        },
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: {
-                                    localIdentName: '[name]_[local]-[hash:base64:5]',
-                                },
-                            },
-                        },
-                        'sass-loader',
-                    ],
-                },
+
                 {
                     test: /\.(png|jpe?g|gif)$/i,
                     use: [

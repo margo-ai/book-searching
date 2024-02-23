@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../helpers/hooks';
@@ -88,9 +88,7 @@ const BooksSection = (): React.ReactElement => {
     return (
         <>
             <BooksCount>
-                {totalItems === 0
-                    ? 'Search book by typing a word or phrase in the search box'
-                    : `Found ${totalItems} results`}
+                {totalItems === 0 ? 'Type something in the search box' : `Found ${totalItems} results`}
             </BooksCount>
             <BookListContainer>
                 {errorMessage}
