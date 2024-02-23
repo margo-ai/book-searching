@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const port = 2233;
 const dist = path.join(__dirname, 'dist');
@@ -42,6 +42,10 @@ module.exports = (_, args) => {
                     exclude: /node_modules/,
                 },
                 {
+                    test: /\.(jpe?g|png)$/i,
+                    type: 'asset',
+                },
+                {
                     test: /\.css$/i,
                     use: [MiniCssExtractPlugin.loader, 'css-loader'],
                 },
@@ -49,23 +53,26 @@ module.exports = (_, args) => {
                     test: /\.svg/,
                     type: 'asset/inline',
                 },
-
-                {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                        },
-                    ],
-                },
             ],
         },
+        // optimization: {
+        //     minimizer: [
+        //         '',
+        //         new ImageMinimizerPlugin({
+        //             minimizer: {
+        //                 implementation: ImageMinimizerPlugin.sharpMinify,
+        //                 options: {
+        //                     encodeOptions: {},
+        //                 },
+        //             },
+        //         }),
+        //     ],
+        // },
         plugins: [
             new HtmlWebpackPlugin({
                 template: './index.html',
                 favicon: './favicon.svg',
             }),
-            new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({
                 filename: 'css/[name].css',
                 chunkFilename: 'css/[name].css',

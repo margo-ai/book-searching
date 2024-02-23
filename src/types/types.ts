@@ -13,8 +13,8 @@ export type GoogleBookType = {
         subtitle?: string;
         authors?: string[];
         publisher?: string;
-        publishedDate: string;
-        description: string;
+        publishedDate?: string;
+        description?: string;
         industryIdentifiers?: IndustryIdentifiersType[];
         readingModes: {
             text: boolean;
@@ -67,11 +67,11 @@ export type GoogleBookType = {
 
 export type TransformedBookType = {
     id: string;
-    title: string;
-    authors: string[];
-    description: string;
-    categories: string[];
-    image: string;
+    title?: string;
+    authors?: string[];
+    description?: string;
+    categories?: string[];
+    image?: string;
 };
 
 export type StateType = {

@@ -34,14 +34,12 @@ const _apiKey = 'key=AIzaSyCqewy5-hdUK4Jffnlsy2oR4jTueEm0Q_s';
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
     async ({ terms, category, sortedBy }: FetchBooksPropsType) => {
-        console.log(category);
         let url = `${_apiBase}q=${terms}${category !== 'all' ? `+subject:${category}` : ''}&orderBy=${
             sortedBy ? sortedBy : 'relevance'
         }&maxResults=30&${_apiKey}`;
 
         const response = await fetch(url);
         const data = await response.json();
-        console.log(url);
         const transformedData = data.items.map(_transformBooks);
         return [transformedData, data.totalItems];
     }
@@ -56,7 +54,6 @@ export const fetchMoreBooks = createAsyncThunk(
 
         const response = await fetch(url);
         const data = await response.json();
-        console.log(url);
         const transformedData = data.items.map(_transformBooks);
         return transformedData;
     }

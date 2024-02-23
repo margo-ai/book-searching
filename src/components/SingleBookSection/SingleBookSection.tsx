@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TransformedBookType } from '../../types/types';
 
@@ -12,22 +12,23 @@ import {
     Description,
     Categories,
     BackButton,
-} from './bookComponentStyles';
+} from './singleBookSectionStyles.js';
 
-const BookComponent = (): React.ReactElement => {
+export const SingleBookSection = (): ReactElement => {
     const navigate = useNavigate();
 
-    function getBook() {
+    const getBook = () => {
         const selectedBookId = localStorage.getItem('bookId');
         const allBooks = JSON.parse(localStorage.getItem('bookList'));
         return allBooks.find((item: TransformedBookType) => item.id === selectedBookId);
-    }
+    };
 
     const bookData = getBook();
 
-    function renderBook(book: TransformedBookType) {
+    const renderBook = (book: TransformedBookType) => {
         const { authors, categories, image, title, description } = book;
         const authorsString = typeof authors !== 'undefined' ? authors.join(', ') : undefined;
+
         return (
             <Container>
                 <BackButton onClick={() => navigate(-1)}>Back</BackButton>
@@ -44,11 +45,9 @@ const BookComponent = (): React.ReactElement => {
                 </BookInfo>
             </Container>
         );
-    }
+    };
 
     const bookItem = renderBook(bookData);
 
     return <>{bookItem}</>;
 };
-
-export default BookComponent;
